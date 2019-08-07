@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pr.adminDAO.AdminDAO;
+import com.pr.adminDAO.AdminDAOJBDBC;
 import com.pr.pojo.AdminPOJO;
 
 @RestController
@@ -19,6 +21,9 @@ public class AdminController
 {
 	@Autowired
 	AdminDAO dao;
+	
+	@Autowired
+	AdminDAOJBDBC daoJDBC;
 	
 	@RequestMapping("/getAdmin")
 	public List<AdminPOJO> getAdmin()
@@ -43,6 +48,26 @@ public class AdminController
 		return "Data inserted Successfully";
 		else 
 			return "Data not Inserted";
+		
+	}
+	
+	@RequestMapping("/getAdminJdbc")
+	public Map<String,Object> getAdminController()
+	{
+		Map<String,Object> map=new HashMap<>();
+		map=daoJDBC.GetAdmin();
+		return map;
+	}
+	
+	@PostMapping("/insertAdminJDBC")
+	public Map<String,Object> InsertAdminJDBC(@RequestBody String param)
+	{
+		System.out.println("controller obj--- "+param);
+		Map<String, Object> map=new HashMap<>();
+		
+		JSONObject obj=new JSONObject(param);
+		map=daoJDBC.insertAdmin(obj);
+		return map;
 		
 	}
 
