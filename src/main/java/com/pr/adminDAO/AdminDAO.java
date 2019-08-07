@@ -6,5 +6,5 @@ import com.pr.pojo.AdminPOJO;
 
 public interface AdminDAO  extends CrudRepository<AdminPOJO, Integer>
 {
-	
+
 }

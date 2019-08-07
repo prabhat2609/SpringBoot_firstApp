@@ -1,6 +1,7 @@
 package com.pr.pojo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 public class AdminPOJO
 {
 	@Id
+	@GeneratedValue
 	private int aId;
 	private String aName;
 	private String aAdd;
