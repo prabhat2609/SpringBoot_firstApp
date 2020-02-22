@@ -31,9 +31,13 @@ public class AdminController
 		System.out.println("Inside controller...");
 		List<AdminPOJO> list=new ArrayList<>();
 		
+		String data;
+		
 		list=(List<AdminPOJO>) dao.findAll();
 		for(AdminPOJO l:list)
 		{
+			
+			
 			
 			System.out.println(l);
 		}
